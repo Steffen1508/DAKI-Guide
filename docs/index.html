@@ -190,10 +190,16 @@
     <h2><span class="num">1</span> Installer VSCode</h2>
     <p>VSCode (Visual Studio Code) er den editor vi bruger til at skrive kode.</p>
     <ol>
-      <li>Gå til <a href="https://code.visualstudio.com" target="_blank">code.visualstudio.com</a></li>
-      <li>Download og kør installeren for dit system</li>
+      <li>👉 <a href="https://code.visualstudio.com/download" target="_blank"><strong>Download VSCode her</strong></a> — vælg din platform (Windows / Mac)</li>
+      <li>Kør installeren</li>
     </ol>
-    <div class="tip">💡 <strong>Windows:</strong> Sæt flueben i "Add to PATH" og "Add 'Open with Code' action" under installationen. Det gør livet nemmere senere.</div>
+    <div class="warn">✅ <strong>Windows — HUSK disse flueben under installationen:</strong>
+      <ul>
+        <li><strong>"Add to PATH"</strong> — så du kan starte VSCode med kommandoen <code>code</code></li>
+        <li><strong>"Add 'Open with Code' action to file/directory context menu"</strong> — så du kan højreklikke en mappe og åbne den direkte i VSCode</li>
+      </ul>
+    </div>
+    <div class="tip">💡 <strong>Mac:</strong> Træk VSCode til Applications-mappen efter download. For at bruge <code>code</code>-kommandoen: åbn VSCode, tryk <code>Cmd+Shift+P</code>, skriv "Shell Command: Install 'code' command in PATH" og tryk Enter.</div>
   </div>
 
   <!-- STEP 2 -->
@@ -201,32 +207,48 @@
     <h2><span class="num">2</span> Installer Miniconda</h2>
     <p>Miniconda styrer dine Python-versioner og pakker. Vi bruger <strong>Miniconda</strong> frem for fuld Anaconda, fordi den er meget mindre og hurtigere.</p>
 
+    <div class="warn">🚫 <strong>Installer IKKE Python separat!</strong> Python følger med Miniconda. Hvis du både henter Python fra python.org <em>og</em> Miniconda, kommer de to til at slås om PATH — det er den klassiske kilde til "python virker ikke"-problemer. Én Python = ét mindre problem.</div>
+
+    <div class="warn">🚫 <strong>Hent ALDRIG Python eller Miniconda fra Microsoft Store.</strong> Store-versionen roder med PATH og conda på måder der er næsten umulige at debugge. Brug kun de officielle downloads herunder.</div>
+
     <div class="os-tabs" data-group="conda">
       <button class="active" data-os="win">Windows</button>
       <button data-os="mac">Mac</button>
     </div>
 
     <div class="os-content active" data-group="conda" data-os="win">
+      <p>Direkte download (springer over reklame-siden):</p>
+      <p>👉 <a href="https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe" target="_blank"><strong>Download Miniconda til Windows (64-bit)</strong></a></p>
+      <p>Eller find den manuelt på <a href="https://www.anaconda.com/download/success" target="_blank">anaconda.com/download</a> under "Miniconda Installers".</p>
       <ol>
-        <li>Gå til <a href="https://www.anaconda.com/download/success" target="_blank">Miniconda download</a> og hent Windows-installeren (64-bit)</li>
-        <li>Kør installeren. Vælg <strong>"Just Me"</strong> når den spørger</li>
-        <li>Efter installation: åbn <strong>"Anaconda Prompt"</strong> fra Start-menuen (ikke almindelig cmd)</li>
+        <li>Kør installeren</li>
+        <li>Vælg <strong>"Just Me (recommended)"</strong> når den spørger</li>
+        <li>På skærmen "Advanced Installation Options", sæt flueben i:
+          <ul>
+            <li>✅ <strong>"Add Miniconda3 to my PATH environment variable"</strong> — dette er KRITISK. Den advarer at det ikke anbefales, men gør det alligevel, ellers kan du ikke bruge conda i almindelig terminal/VSCode</li>
+            <li>✅ <strong>"Register Miniconda3 as my default Python"</strong></li>
+          </ul>
+        </li>
+        <li>Klik Install og lad den køre færdig</li>
       </ol>
-      <div class="warn">⚠️ På Windows skal du bruge <strong>Anaconda Prompt</strong> til conda-kommandoer, medmindre du har initialiseret conda i PowerShell.</div>
+      <div class="tip">💡 Efter installation: luk ALLE åbne terminaler og VSCode, og åbn en ny. PATH-ændringer virker først i nye vinduer.</div>
     </div>
 
     <div class="os-content" data-group="conda" data-os="mac">
+      <p>Vælg den rigtige til din chip:</p>
+      <p>👉 <a href="https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.pkg" target="_blank"><strong>Download til Apple Silicon (M1/M2/M3/M4)</strong></a></p>
+      <p>👉 <a href="https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.pkg" target="_blank"><strong>Download til Intel Mac</strong></a></p>
+      <div class="tip">💡 Er du i tvivl om chip: klik Apple-menu → "Om denne Mac". Står der "Apple M..." er det Apple Silicon. Står der "Intel" er det den anden.</div>
       <ol>
-        <li>Gå til <a href="https://www.anaconda.com/download/success" target="_blank">Miniconda download</a></li>
-        <li>Vælg <strong>Apple Silicon</strong> (M1/M2/M3/M4) eller <strong>Intel</strong> afhængigt af din Mac</li>
-        <li>Kør .pkg installeren, eller brug terminalen</li>
+        <li>Kør .pkg-installeren og følg trinene</li>
+        <li>Efter installation: luk terminalen og åbn en ny, så conda bliver aktiveret</li>
       </ol>
-      <div class="tip">💡 Er du i tvivl om chip: klik Apple-menu → "Om denne Mac". Står der "Apple M..." er det Apple Silicon.</div>
     </div>
 
-    <p>Bekræft at det virker ved at åbne en ny terminal / Anaconda Prompt og skrive:</p>
+    <p>Bekræft at det virker ved at åbne en <strong>ny</strong> terminal (Windows: brug <strong>Anaconda Prompt</strong> fra Start-menuen hvis conda ikke virker i almindelig terminal) og skrive:</p>
     <pre><button class="copy-btn">Kopiér</button><code>conda --version</code></pre>
     <div class="check">✅ Du skal se noget i stil med <code>conda 24.x.x</code></div>
+    <div class="warn">⚠️ Får du <code>conda: command not found</code>? Se fejlfindingssektionen nederst — det er næsten altid PATH eller et gammelt terminal-vindue.</div>
   </div>
 
   <!-- STEP 3 -->
@@ -264,8 +286,8 @@ git config --global user.email "din@email.dk"</code></pre>
     <p>Nu laver vi et isoleret Python-miljø med alle de pakker I skal bruge: <code>numpy</code>, <code>pandas</code>, <code>matplotlib</code>, <code>scikit-learn</code>, <code>jupyter</code> og <code>seaborn</code>.</p>
 
     <h3>Hent setup-filerne</h3>
-    <p>Klon dette repo (skift <code>DIT-BRUGERNAVN</code> ud med det rigtige):</p>
-    <pre><button class="copy-btn">Kopiér</button><code>git clone https://github.com/DIT-BRUGERNAVN/aau-setup.git
+    <p>Klon dette repo:</p>
+    <pre><button class="copy-btn">Kopiér</button><code>git clone https://github.com/Steffen1508/aau-setup.git
 cd aau-setup</code></pre>
 
     <h3>Opret miljøet</h3>
@@ -310,10 +332,29 @@ print("Alt virker! 🎉")</code></pre>
 
   <div class="step">
     <h2>Hjælp & fejlfinding</h2>
-    <p><strong>"conda: command not found"</strong> — Luk terminalen og åbn en ny. På Windows: brug Anaconda Prompt.</p>
-    <p><strong>VSCode finder ikke aau-ai</strong> — Genstart VSCode, kør så "Python: Select Interpreter" igen.</p>
-    <p><strong>git clone fejler</strong> — Tjek at du har kopieret URL'en korrekt og at Git er installeret (<code>git --version</code>).</p>
-    <p>Stadig i tvivl? Spørg din tutor 🙂</p>
+
+    <h3>"conda: command not found" / "conda genkendes ikke"</h3>
+    <p>Dette er langt det mest almindelige problem. Prøv i rækkefølge:</p>
+    <ol>
+      <li><strong>Luk ALLE terminaler og VSCode helt, og åbn et nyt vindue.</strong> PATH-ændringer gælder først i nye vinduer — 9 ud af 10 gange er det bare det.</li>
+      <li><strong>Windows:</strong> Åbn <strong>"Anaconda Prompt"</strong> fra Start-menuen i stedet for almindelig cmd/PowerShell. Der virker conda altid.</li>
+      <li>Vil du have conda i almindelig PowerShell, kør én gang i Anaconda Prompt: <code>conda init powershell</code>, luk og åbn PowerShell igen.</li>
+      <li>Virker det stadig ikke? Så blev "Add to PATH"-fluebenet sandsynligvis ikke sat under installationen. Nemmeste fix: afinstaller Miniconda og installer forfra — husk fluebenet denne gang.</li>
+    </ol>
+
+    <h3>"python" åbner Microsoft Store</h3>
+    <p>Det betyder at Windows' Store-genvej blokerer den rigtige Python. Fix: åbn Windows-indstillinger → søg "Administrer aliaser for app-udførelse" (Manage app execution aliases) → slå <strong>begge</strong> "python.exe" og "python3.exe" <strong>FRA</strong>. Luk terminalen og prøv igen.</p>
+
+    <h3>VSCode finder ikke aau-ai-miljøet</h3>
+    <p>Genstart VSCode helt. Tryk så <code>Ctrl+Shift+P</code> (Mac: <code>Cmd+Shift+P</code>) → "Python: Select Interpreter" → vælg den der indeholder <code>aau-ai</code>. Ser du den ikke på listen, så tjek at miljøet blev oprettet med <code>conda env list</code>.</p>
+
+    <h3>"conda env create" fejler eller hænger</h3>
+    <p>Tjek at du står i den rigtige mappe (<code>cd aau-setup</code>) og at <code>environment.yml</code> ligger der (<code>dir</code> på Windows, <code>ls</code> på Mac). Hvis download hænger, så tjek din internetforbindelse og prøv igen — conda genoptager typisk.</p>
+
+    <h3>git clone fejler</h3>
+    <p>Tjek at URL'en er kopieret korrekt og at Git er installeret (<code>git --version</code>). Får du en fejl om authentication, så tjek at repo'et er offentligt, eller log ind på GitHub.</p>
+
+    <p style="margin-top:1rem;">Stadig i tvivl? Spørg din tutor 🙂</p>
   </div>
 
 </div>
