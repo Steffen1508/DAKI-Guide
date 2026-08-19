@@ -4,7 +4,7 @@ Velkommen til Design og Udvikling af Kunstig Intelligens! Denne guide får dig f
 
 Følg trinene i rækkefølge. Det tager ca. 30-45 minutter.
 
-👉 **[Åbn den pæne guide her](https://DIT-BRUGERNAVN.github.io/aau-setup/)** (når du har slået GitHub Pages til)
+👉 **[Åbn den pæne guide her](https://Steffen1508.github.io/aau-setup/)** (når du har slået GitHub Pages til)
 
 ---
 
@@ -27,7 +27,7 @@ Når Miniconda og Git er installeret:
 
 ```bash
 # Klon dette repo
-git clone https://github.com/DIT-BRUGERNAVN/aau-setup.git
+git clone https://github.com/Steffen1508/aau-setup.git
 cd aau-setup
 
 # Opret miljøet med alle pakker
