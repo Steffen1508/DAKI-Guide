@@ -183,6 +183,7 @@
     <span>4. Miljø</span>
     <span>5. Extensions</span>
     <span>6. Test</span>
+    <span>7. Første opgave</span>
   </div>
 
   <!-- STEP 1 -->
@@ -327,7 +328,120 @@ print("scikit-learn:", sklearn.__version__)
 print("Alt virker! 🎉")</code></pre>
     <p>Kør den med (husk <code>conda activate aau-ai</code> først):</p>
     <pre><button class="copy-btn">Kopiér</button><code>python test.py</code></pre>
-    <div class="check">✅ Ser du versionsnumre og "Alt virker!" er du helt klar. Velkommen til! 🚀</div>
+    <div class="check">✅ Ser du versionsnumre og "Alt virker!" er du helt klar. Videre til din første opgave! 🚀</div>
+  </div>
+
+  <!-- STEP 7 -->
+  <div class="step">
+    <h2><span class="num">7</span> Din første opgave</h2>
+    <p>Nu hvor miljøet kører, skal du prøve hele arbejdsgangen af: oprette et GitHub-repo, arbejde i VSCode, og committe og pushe din kode. Til sidst tegner du et hus med <code>pygame</code>. Følg punkterne i rækkefølge.</p>
+
+    <h3>7.1 — Opret en GitHub-profil</h3>
+    <ol>
+      <li>Gå til <a href="https://github.com/signup" target="_blank">github.com/signup</a> og opret en konto, hvis du ikke allerede har en.</li>
+      <li>Brug gerne den samme email som du satte op i Git i trin 3 — så hænger dine commits sammen med din profil.</li>
+    </ol>
+    <div class="tip">💡 Som studerende kan du få gratis ekstra-funktioner via <a href="https://education.github.com/pack" target="_blank">GitHub Student Developer Pack</a>. Ikke nødvendigt for opgaven, men rart at vide.</div>
+
+    <h3>7.2 — Lav en mappe til dine opgaveløsninger</h3>
+    <p>Denne mappe bliver dit <strong>private</strong> GitHub-repo, hvor du gemmer alle dine opgaver gennem kurset.</p>
+    <div class="warn">🚫 <strong>Læg IKKE mappen i OneDrive, Dropbox eller lignende sky-mapper.</strong> De synkroniserer i baggrunden og kommer i karambolage med Git — det giver mærkelige konflikter og ødelagte filer. Læg den et almindeligt sted, fx <code>Documents/aau</code> eller direkte i din hjemmemappe.</div>
+    <p>Opret mappen og gå ind i den (tilpas navn/sti som du vil):</p>
+    <div class="os-tabs" data-group="mkdir">
+      <button class="active" data-os="win">Windows</button>
+      <button data-os="mac">Mac</button>
+    </div>
+    <div class="os-content active" data-group="mkdir" data-os="win">
+      <pre><button class="copy-btn">Kopiér</button><code>cd %USERPROFILE%\Documents
+mkdir aau-opgaver
+cd aau-opgaver</code></pre>
+    </div>
+    <div class="os-content" data-group="mkdir" data-os="mac">
+      <pre><button class="copy-btn">Kopiér</button><code>cd ~/Documents
+mkdir aau-opgaver
+cd aau-opgaver</code></pre>
+    </div>
+
+    <h3>7.3 — Opret et privat repo på GitHub</h3>
+    <ol>
+      <li>På GitHub: klik på <strong>+</strong> øverst til højre → <strong>New repository</strong>.</li>
+      <li>Giv det et navn (fx <code>aau-opgaver</code>), vælg <strong>Private</strong>, og opret det <strong>uden</strong> README (den laver vi selv i næste trin).</li>
+      <li>Kopiér repo'ets URL — du får brug for den om lidt.</li>
+    </ol>
+
+    <h3>7.4 — Opret README.md i VSCode</h3>
+    <p>Åbn mappen i VSCode (<code>code .</code> fra terminalen, eller højreklik mappen → "Open with Code"). Opret en fil ved navn <code>README.md</code> og skriv dit navn i den:</p>
+    <pre><button class="copy-btn">Kopiér</button><code># Dit Navn
+
+AAU AI — opgaveløsninger</code></pre>
+
+    <h3>7.5 — Commit og push til GitHub</h3>
+    <p>Første gang kobler du din lokale mappe sammen med dit GitHub-repo. Kør i terminalen (stå i mappen):</p>
+    <pre><button class="copy-btn">Kopiér</button><code>git init
+git add README.md
+git commit -m "Tilføj README med mit navn"
+git branch -M main
+git remote add origin DIN-REPO-URL
+git push -u origin main</code></pre>
+    <div class="warn">⚠️ Erstat <code>DIN-REPO-URL</code> med URL'en fra trin 7.3, fx <code>https://github.com/ditbrugernavn/aau-opgaver.git</code>. Bliver du bedt om at logge ind, følg login-vinduet fra GitHub.</div>
+    <div class="check">✅ Gå ind på din GitHub-side og bekræft at <code>README.md</code> nu ligger der, og at dit navn vises.</div>
+    <div class="tip">💡 Fremover er arbejdsgangen bare: <code>git add .</code> → <code>git commit -m "besked"</code> → <code>git push</code>.</div>
+
+    <h3>7.6 — Lav en undermappe: Lektion 1</h3>
+    <p>Opret en undermappe i dit repo:</p>
+    <pre><button class="copy-btn">Kopiér</button><code>mkdir "Lektion 1"</code></pre>
+
+    <h3>7.7 — Installér pygame</h3>
+    <p>Sørg for at dit miljø er aktivt (<code>conda activate aau-ai</code>), og installér så:</p>
+    <pre><button class="copy-btn">Kopiér</button><code>pip install pygame</code></pre>
+    <div class="check">✅ Test med <code>python -m pygame.examples.aliens</code> — der skulle gerne åbne et lille spil-vindue.</div>
+
+    <h3>7.8 — Klon draw-projektet</h3>
+    <p>Klon <a href="https://github.com/andreasmoegelmose/draw/tree/master" target="_blank">draw-projektet</a> et sted <em>uden for</em> dit eget repo (fx i din hjemmemappe), så de to repos ikke blandes sammen:</p>
+    <pre><button class="copy-btn">Kopiér</button><code>git clone https://github.com/andreasmoegelmose/draw/tree/master</code></pre>
+
+    <h3>7.9 — Kopiér draw.py ind i Lektion 1</h3>
+    <p>Kopiér <code>draw.py</code> fra din klon over i din <code>Lektion 1</code>-mappe:</p>
+    <div class="os-tabs" data-group="copy">
+      <button class="active" data-os="win">Windows</button>
+      <button data-os="mac">Mac</button>
+    </div>
+    <div class="os-content active" data-group="copy" data-os="win">
+      <pre><button class="copy-btn">Kopiér</button><code>copy draw\draw.py "aau-opgaver\Lektion 1\draw.py"</code></pre>
+    </div>
+    <div class="os-content" data-group="copy" data-os="mac">
+      <pre><button class="copy-btn">Kopiér</button><code>cp draw/draw.py "aau-opgaver/Lektion 1/draw.py"</code></pre>
+    </div>
+    <div class="tip">💡 Du kan også bare trække filen fra én mappe til en anden i VSCode's filpanel — det virker lige så godt.</div>
+
+    <h3>7.10 — Tegn et hus 🏠</h3>
+    <p>Nu til det sjove. Ret <code>draw.py</code> så du tegner et hus — gør det flot med mange farver. Arbejd i to trin:</p>
+    <ol>
+      <li>Start med kun at bruge flere kald til <code>pygame.draw.line()</code>, så du får styr på hvordan koordinatsystemet virker (0,0 er øverste venstre hjørne).</li>
+      <li>Kopiér så <code>draw.py</code> til <code>draw_with_shapes.py</code>:
+        <div class="os-tabs" data-group="copy2">
+          <button class="active" data-os="win">Windows</button>
+          <button data-os="mac">Mac</button>
+        </div>
+        <div class="os-content active" data-group="copy2" data-os="win">
+          <pre><button class="copy-btn">Kopiér</button><code>copy "aau-opgaver\Lektion 1\draw.py" "aau-opgaver\Lektion 1\draw_with_shapes.py"</code></pre>
+        </div>
+        <div class="os-content" data-group="copy2" data-os="mac">
+          <pre><button class="copy-btn">Kopiér</button><code>cp "aau-opgaver/Lektion 1/draw.py" "aau-opgaver/Lektion 1/draw_with_shapes.py"</code></pre>
+        </div>
+      </li>
+      <li>Prøv i <code>draw_with_shapes.py</code> at tegne huset med firkanter og andre former i stedet for løse linjer. Slå funktionerne op her: <a href="https://www.pygame.org/docs/ref/draw.html" target="_blank">pygame.draw-dokumentationen</a> (<code>rect</code>, <code>polygon</code>, <code>circle</code> og <code>ellipse</code> er gode at kigge på).</li>
+    </ol>
+    <div class="tip">💡 Husk at committe undervejs — fx når linje-versionen virker, og igen når form-versionen er færdig. Så øver du dig i den rigtige arbejdsgang, og du kan altid gå tilbage.</div>
+
+    <h3>7.11 — Fælles GitHub med din P0-gruppe</h3>
+    <p>Til sidst: lav et <strong>fælles</strong> repo sammen med din P0-gruppe, og giv alle adgang.</p>
+    <ol>
+      <li>Én i gruppen opretter et nyt repo (som i trin 7.3).</li>
+      <li>Gå ind i repo'et → <strong>Settings</strong> → <strong>Collaborators</strong> → <strong>Add people</strong>, og tilføj de andres GitHub-brugernavne.</li>
+      <li>De andre får en invitation (tjek email eller notifikationer på GitHub) og skal <strong>acceptere</strong> den, før de har adgang.</li>
+    </ol>
+    <div class="check">✅ Alle i gruppen kan klone repo'et og pushe til det. Nu er I klar til at arbejde sammen om koden.</div>
   </div>
 
   <div class="step">
@@ -353,6 +467,12 @@ print("Alt virker! 🎉")</code></pre>
 
     <h3>git clone fejler</h3>
     <p>Tjek at URL'en er kopieret korrekt og at Git er installeret (<code>git --version</code>). Får du en fejl om authentication, så tjek at repo'et er offentligt, eller log ind på GitHub.</p>
+
+    <h3>git push beder om brugernavn/adgangskode hele tiden</h3>
+    <p>GitHub tillader ikke længere almindeligt kodeord i terminalen. Nemmeste vej er login-vinduet der popper op første gang (Git Credential Manager husker dig bagefter). Virker det ikke, kan du oprette et <a href="https://github.com/settings/tokens" target="_blank">Personal Access Token</a> og bruge det som adgangskode.</p>
+
+    <h3>pygame-vinduet åbner ikke / lukker med det samme</h3>
+    <p>Tjek at miljøet er aktivt (<code>(aau-ai)</code> foran i prompten) og at du kørte <code>pip install pygame</code> mens det var aktivt. Sørg også for at din kode har en event-løkke, så vinduet ikke bare lukker igen med det samme.</p>
 
     <p style="margin-top:1rem;">Stadig i tvivl? Spørg din tutor 🙂</p>
   </div>
