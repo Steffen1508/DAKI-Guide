@@ -9,4 +9,4 @@ import sklearn
 print("NumPy:", np.__version__)
 print("Pandas:", pd.__version__)
 print("scikit-learn:", sklearn.__version__)
-print("Alt virker! 🎉")
+print("Alt virker!")
